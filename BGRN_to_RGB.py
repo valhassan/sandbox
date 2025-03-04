@@ -25,17 +25,17 @@ def main(csv_file):
         os.system(gdal_translate_cmd)
         dir_column.append(out_pth)
     df[df.columns[0]] = dir_column
-    out_file = in_path.parent.joinpath('planetscope_CSPP_RGB.csv')
+    out_file = in_path.parent.joinpath('dominica_RGB.csv')
     df.to_csv(out_file, index=False, header=False)
     logging.info(f' Complete!!! saved to {out_file}')
-    logging.info(f'BGRN to NRGB Complete!!!')
+    logging.info(f'BGRN to RGB Complete!!!')
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='BGRN to NRGB')
+    parser = argparse.ArgumentParser(description='BGRN to RGB')
     parser.add_argument('csvFile', help='Path to CSV file')
     args = parser.parse_args()
     start_time = time.time()
-    print(f'\n\nBegin BGRN to NRGB ....\n\n')
+    print(f'\n\nBegin BGRN to RGB ....\n\n')
     main(args.csvFile)
     print("Elapsed time:{}".format(time.time() - start_time))
